@@ -1,0 +1,18 @@
+CREATE (n1:Author{id:1,firstName:'William',lastName:'Shakespeare', dateOfBirth: 'April 26, 1564'})
+CREATE (n2:Author{id:2,firstName:'Joanne',lastName:'Rowling', dateOfBirth: 'July 31, 1965'})
+CREATE (n3:Author{id:3,firstName:'James',lastName:'Patterson', dateOfBirth: 'March 22, 1947'})
+CREATE (b1:Book{id:1,name:'Harry Potter and the Philosopher\'s Stone', isbn: '0747549559', language: 'English', authorId:2})
+CREATE (b2:Book{id:2,name:'Fantastic Beasts and Where to Find Them', isbn: '140889694X', language: 'English', authorId:2})
+CREATE (b3:Book{ID:3,name:'The Ickabog', isbn: '1338732870', language: 'English', authorId:2})
+CREATE (b4:Book{id:4,name:'The Tales of Beedle the Bard', isbn: '9781408883099', language: 'English', authorId:2})
+CREATE (b5:Book{id:5,name:'Along Came a Spider', isbn: '1784757403', language: 'English', authorId:3})
+CREATE (b6:Book{id:6,name:'Triple Cross: The Greatest Alex Cross Thriller Since Kiss the Girls', isbn: '0316499188', language: 'English', authorId:3})
+CREATE (b7:Book{id:7,name:'The Complete Works of Shakespeare', isbn: '9781626860988', language: 'English', authorId:1});
+
+MATCH(b1:Book{id:1}) MATCH(a1:Author{id:2}) CREATE (b1)-[:WRITTEN_BY]->(a1);
+MATCH(b2:Book{id:2}) MATCH(a2:Author{id:2}) CREATE (b2)-[:WRITTEN_BY]->(a2);
+MATCH(b3:Book{id:3}) MATCH(a3:Author{id:2}) CREATE (b3)-[:WRITTEN_BY]->(a3);
+MATCH(b4:Book{id:4}) MATCH(a4:Author{id:2}) CREATE (b4)-[:WRITTEN_BY]->(a4);
+MATCH(b5:Book{id:5}) MATCH(a5:Author{id:3}) CREATE (b5)-[:WRITTEN_BY]->(a5);
+MATCH(b6:Book{id:6}) MATCH(a6:Author{id:3}) CREATE (b6)-[:WRITTEN_BY]->(a6);
+MATCH(b7:Book{id:7}) MATCH(a7:Author{id:1}) CREATE (b7)-[:WRITTEN_BY]->(a7);
